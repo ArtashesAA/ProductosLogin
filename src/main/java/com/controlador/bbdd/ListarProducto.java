@@ -48,13 +48,25 @@ public class ListarProducto extends HttpServlet {
 		// Comprobación de que se realiza el get
 		System.out.println("ListarProducto.doGET");
 
-		// Se guarda en una lista todos los productos que recibe el servicio
-		List<Producto> productos = productoRepository.getAllProductos();
-		request.setAttribute("PRODUCTOS", productos);
+		String rol = "usuario";  // Cambia esto según tu lógica para obtener el rol del usuario
 
-		// Se envía a listarProductos
-		RequestDispatcher dispatcher = request.getRequestDispatcher("JSP/roles/usuarios/admin/homeAdmin.jsp");
-		dispatcher.forward(request, response);
+	    // Determina la página de inicio según el rol
+	    String homePage;
+	    if ("2".equals(rol)) {
+	        homePage = "/JSP/roles/usuarios/admin/homeAdmin.jsp";
+	    } else if ("1".equals(rol)) {
+	        homePage = "/JSP/roles/usuarios/usuario/homeUsuario.jsp";
+	    } else{
+	        homePage = "/JSP/roles/usuarios/invitado/homeInvitado.jsp";
+	    } 
+
+	    // Se guarda en una lista todos los productos que recibe el servicio
+	    List<Producto> productos = productoRepository.getAllProductos();
+	    request.setAttribute("PRODUCTOS", productos);
+
+	    // Redirige a la página de inicio correspondiente
+	    RequestDispatcher dispatcher = request.getRequestDispatcher(homePage);
+	    dispatcher.forward(request, response);
 	}
 
 	/**
@@ -66,13 +78,25 @@ public class ListarProducto extends HttpServlet {
 		// Comprobación de que se realiza el post
 		System.out.println("ListarProducto.doPost");
 
-		// Se guarda en una lista todos los productos que recibe el servicio
-		List<Producto> productos = productoRepository.getAllProductos();
+		String rol = "usuario";  // Cambia esto según tu lógica para obtener el rol del usuario
 
-		// Request de los atributos producto
-		request.setAttribute("PRODUCTOS", productos);
-		RequestDispatcher dispacher = request.getRequestDispatcher("JSP/roles/usuarios/admin/homeAdmin.jsp");
-		dispacher.forward(request, response);
+	    // Determina la página de inicio según el rol
+	    String homePage;
+	    if ("2".equals(rol)) {
+	        homePage = "/JSP/roles/usuarios/admin/homeAdmin.jsp";
+	    } else if ("1".equals(rol)) {
+	        homePage = "/JSP/roles/usuarios/usuario/homeUsuario.jsp";
+	    } else {
+	        homePage = "/JSP/roles/usuarios/invitado/homeInvitado.jsp";
+	    }
+
+	    // Se guarda en una lista todos los productos que recibe el servicio
+	    List<Producto> productos = productoRepository.getAllProductos();
+	    request.setAttribute("PRODUCTOS", productos);
+
+	    // Redirige a la página de inicio correspondiente
+	    RequestDispatcher dispatcher = request.getRequestDispatcher(homePage);
+	    dispatcher.forward(request, response);
 	}
 
 }
