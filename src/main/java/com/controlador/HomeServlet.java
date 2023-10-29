@@ -72,13 +72,13 @@ public class HomeServlet extends HttpServlet {
 	private String getHomePageForRole(int rol) {
 	    switch (rol) {
 	        case 1:
-	            return "JSP/roles/usuario/homeUsuario.jsp";
+	            return "/JSP/roles/usuario/homeUsuario.jsp";
 	        case 2:
-	            return "JSP/roles/admin/homeAdmin.jsp";
+	            return "/JSP/roles/admin/homeAdmin.jsp";
 	        case 3:
-	            return "JSP/roles/invitado/homeInvitado.jsp";
+	            return "/JSP/roles/invitado/homeInvitado.jsp";
 	        default:
-	            return null;
+	            return "/JSP/roles/invitado/homeInvitado.jsp";
 	    }
 	}
 

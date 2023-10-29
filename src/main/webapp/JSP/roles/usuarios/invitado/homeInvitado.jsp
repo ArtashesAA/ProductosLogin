@@ -16,12 +16,10 @@
     <h1>APP Productos</h1>
 	    
 	<h2>Bienvenido invitado</h2>
-	
-	<a href="https://cdn-icons-png.flaticon.com/512/107/107831.png"></a>
   
   	<h2>Lista de Productos</h2>
 
-		<form action="ListarProducto" method="get">
+		<form action="/Productos_JSTL/ListarProducto" method="get">
 			<table>
 				<thead>
 					<tr>

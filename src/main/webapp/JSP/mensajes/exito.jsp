@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1>¡¡¡Ha ido todo bien!!</h1>
-<a href="${pageContext.request.contextPath}/home">atras</a>
+<a href="../../">atras</a>
 </body>
 </html>

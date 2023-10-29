@@ -83,16 +83,6 @@
   </filter-mapping>
   <servlet>
     <description></description>
-    <display-name>Desconectar</display-name>
-    <servlet-name>Desconectar</servlet-name>
-    <servlet-class>com.controlador.auth.Desconectar</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Desconectar</servlet-name>
-    <url-pattern>/Desconectar</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>GitHubCallbackServlet</display-name>
     <servlet-name>GitHubCallbackServlet</servlet-name>
     <servlet-class>com.controlador.auth.GitHubCallbackServlet</servlet-class>

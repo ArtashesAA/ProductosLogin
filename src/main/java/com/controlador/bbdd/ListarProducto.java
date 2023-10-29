@@ -14,28 +14,27 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
 /**
  * Servlet implementation class ListarProducto
  */
 public class ListarProducto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	private ProductoRepository productoRepository;
 
 	@Override
 	public void init() throws ServletException {
+		
 		super.init();
 		try {
 			// Utilizar el método para crear la configuración y pasarla al repositorio.
 			this.productoRepository = new ProductoRepository(createDataSourceConfig());
 		} catch (Exception e) {
-			throw new ServletException("Error initializing PersonaRepository", e);
+			throw new ServletException("Error initializing ProductoRepository", e);
 		}
 	}
 
 	private DataSourceConfig createDataSourceConfig() {
-
 		return new DatabaseConnectionPoolHikari();
 	}
 
@@ -48,25 +47,25 @@ public class ListarProducto extends HttpServlet {
 		// Comprobación de que se realiza el get
 		System.out.println("ListarProducto.doGET");
 
-		String rol = "usuario";  // Cambia esto según tu lógica para obtener el rol del usuario
+		String rol = "usuario"; 
 
-	    // Determina la página de inicio según el rol
-	    String homePage;
-	    if ("2".equals(rol)) {
-	        homePage = "/JSP/roles/usuarios/admin/homeAdmin.jsp";
-	    } else if ("1".equals(rol)) {
-	        homePage = "/JSP/roles/usuarios/usuario/homeUsuario.jsp";
-	    } else{
-	        homePage = "/JSP/roles/usuarios/invitado/homeInvitado.jsp";
-	    } 
+		// Determina la página de inicio según el rol
+		String homePage;
+		if ("2".equals(rol)) {
+			homePage = "/JSP/roles/admin/homeAdmin.jsp";
+		} else if ("1".equals(rol)) {
+			homePage = "/JSP/roles/usuario/homeUsuario.jsp";
+		} else {
+			homePage = "/JSP/roles/invitado/homeInvitado.jsp";
+		}
 
-	    // Se guarda en una lista todos los productos que recibe el servicio
-	    List<Producto> productos = productoRepository.getAllProductos();
-	    request.setAttribute("PRODUCTOS", productos);
+		// Se guarda en una lista todos los productos que recibe el servicio
+		List<Producto> productos = productoRepository.getAllProductos();
+		request.setAttribute("PRODUCTOS", productos);
 
-	    // Redirige a la página de inicio correspondiente
-	    RequestDispatcher dispatcher = request.getRequestDispatcher(homePage);
-	    dispatcher.forward(request, response);
+		// Redirige a la página de inicio correspondiente
+		RequestDispatcher dispatcher = request.getRequestDispatcher(homePage);
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -78,25 +77,25 @@ public class ListarProducto extends HttpServlet {
 		// Comprobación de que se realiza el post
 		System.out.println("ListarProducto.doPost");
 
-		String rol = "usuario";  // Cambia esto según tu lógica para obtener el rol del usuario
+		String rol = "usuario"; // Cambia esto según tu lógica para obtener el rol del usuario
 
-	    // Determina la página de inicio según el rol
-	    String homePage;
-	    if ("2".equals(rol)) {
-	        homePage = "/JSP/roles/usuarios/admin/homeAdmin.jsp";
-	    } else if ("1".equals(rol)) {
-	        homePage = "/JSP/roles/usuarios/usuario/homeUsuario.jsp";
-	    } else {
-	        homePage = "/JSP/roles/usuarios/invitado/homeInvitado.jsp";
-	    }
+		// Determina la página de inicio según el rol
+		String homePage;
+		if ("2".equals(rol)) {
+			homePage = "/JSP/roles/admin/homeAdmin.jsp";
+		} else if ("1".equals(rol)) {
+			homePage = "/JSP/roles/usuario/homeUsuario.jsp";
+		} else {
+			homePage = "/JSP/roles/invitado/homeInvitado.jsp";
+		}
 
-	    // Se guarda en una lista todos los productos que recibe el servicio
-	    List<Producto> productos = productoRepository.getAllProductos();
-	    request.setAttribute("PRODUCTOS", productos);
+		// Se guarda en una lista todos los productos que recibe el servicio
+		List<Producto> productos = productoRepository.getAllProductos();
+		request.setAttribute("PRODUCTOS", productos);
 
-	    // Redirige a la página de inicio correspondiente
-	    RequestDispatcher dispatcher = request.getRequestDispatcher(homePage);
-	    dispatcher.forward(request, response);
+		// Redirige a la página de inicio correspondiente
+		RequestDispatcher dispatcher = request.getRequestDispatcher(homePage);
+		dispatcher.forward(request, response);
 	}
 
 }

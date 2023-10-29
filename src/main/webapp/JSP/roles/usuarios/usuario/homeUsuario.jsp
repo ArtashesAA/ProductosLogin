@@ -28,14 +28,11 @@
 				<h2>Hola ${sessionScope.usuario.name}
 					(${sessionScope.usuario.login})</h2>
 			</c:when>
-
 		</c:choose>
-
-		<a href="https://cdn-icons-png.flaticon.com/512/107/107831.png"></a>
 
 		<h2>Lista de Productos</h2>
 
-		<form action="ListarProducto" method="get">
+		<form action="/Productos_JSTL/ListarProducto" method="get">
 			<table>
 				<thead>
 					<tr>
@@ -62,8 +59,8 @@
 		</form>
 		
 		<br>
-		<a class="btn btn-secondary" href="../../../elementos/logout.jsp">Cerrar Sesión</a>
-	</div>
+			<a href="<%=request.getContextPath()%>/logout">Cerrar Sesión</a>
+		</div>
 	
 	
 

@@ -16,9 +16,9 @@ public class DatabaseConnectionPoolHikari implements DataSourceConfig {
 		HikariConfig config = new HikariConfig();
 		ConfigLoader configLoader = ConfigLoader.getInstance();
 	
-		config.setJdbcUrl(configLoader.getJDBC());
-		config.setUsername(configLoader.getUser());
-		config.setPassword(configLoader.getPass());
+		config.setJdbcUrl("jdbc:mysql://localhost:3306/productos");
+		config.setUsername("root");
+		config.setPassword("root");
 		config.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		
 		/**
